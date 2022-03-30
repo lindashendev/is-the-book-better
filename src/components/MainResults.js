@@ -7,6 +7,7 @@ function MainResults({userQuery}) {
   const [isLoading, setIsLoading] = useState(false);
   const [movieResult, setMovieResult] = useState();
   const [bookResult, setBookResult] = useState();
+  const [matchFound, setMatchFound] = useState(false);
   // Fecth data...
 
   useEffect(() => {
@@ -29,40 +30,59 @@ function MainResults({userQuery}) {
   
     axios.all([movieRequest, googleBooksRequest]).then(axios.spread((movieData, booksData) => {
         setIsLoading(false);
-        // using response, if data matches, set State object 
-        // if no data found, alert trigger 
-          // if either are empty
-        // console.log(movieData.data.results);
-        // console.log(booksData.data.items);
+
         const movieResults = movieData.data.results;
-        const booksResults = booksData.data.items
-        // loop through the arrays - of objects 
-          // movieData contains Object
-            // object.title
-            // object.vote_average
-          // booksData contains Object
-            // object.volumeInfo.title
-            // object.volumeInfo.averageRating
-        // loop find first item in each list that matches exactly, despite case used
-          // find separately if the search term exists 
-          // loop to get the term out of the first then find it in the second
-          // use the userQuery
-        const re = new RegExp(userQuery, 'i')
-        const found = movieResults.find(movie => {
-          return re.test(movie.title);
-        })
-    }));
+        const bookResults = booksData.data.items
+
+        if (movieResults.length > 0 && bookResults !== undefined) {
+          const re = new RegExp(userQuery, 'i')
+          const movieFound = movieResults.find(movie => {
+            return re.test(movie.title);
+          })
+          if (movieFound) {
+            const title = movieFound.title;
+            const bookFound = bookResults.find(book => {
+              return book.volumeInfo.title === title;
+            })
+            if (bookFound) {
+              setMovieResult(movieFound);
+              setBookResult(bookFound);
+              displayResult();
+              setMatchFound(true);
+            }
+          }
+        } 
+      }));
     } 
   }, [userQuery]);
+        
+  function displayResult() {
+    console.log(movieResult);
+    console.log(bookResult.volumeInfo);
+    // once we have the results 
+    // compare average rating
+          // object.vote_average
+          // object.volumeInfo.averageRating
+  }
 
     return(
-        <div className="MaiResults">
+        <div className="results">
           {isLoading 
           ? <p>Fetching results</p> 
           : <div>
             Results here
+            <div className="movie">
+              <div className="wrapper">
+                
+              </div>
+            </div>
+            <div className="book">
+              <div className="wrapper"></div>
+              </div>
             </div>
           }
+          {!matchFound
+          && <p>Alert</p>}
         </div>
     )
 
