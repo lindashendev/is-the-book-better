@@ -2,13 +2,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 // useApiData.js
 function MainResults({userQuery}) {
   const [isLoading, setIsLoading] = useState(false);
   const [movieResult, setMovieResult] = useState();
   const [bookResult, setBookResult] = useState();
   const [matchFound, setMatchFound] = useState(false);
-  // Fecth data...
+  const [ratingCompare, setRatingCompare] = useState("");
 
   useEffect(() => {
   
@@ -36,7 +37,6 @@ function MainResults({userQuery}) {
         const movieResults = movieData.data.results;
         const bookResults = booksData.data.items
 
-        console.log(bookResults);
         if (movieResults.length > 0 && bookResults !== undefined) {
           const re = new RegExp(userQuery, 'i')
           const movieFound = movieResults.find(movie => {
@@ -50,7 +50,6 @@ function MainResults({userQuery}) {
             if (bookFound) {
               setMovieResult(movieFound);
               setBookResult(bookFound);
-              displayResult();
               setMatchFound(true);
             }
           }
@@ -59,45 +58,49 @@ function MainResults({userQuery}) {
     } 
   }, [userQuery]);
         
-  function displayResult() {
-    console.log(movieResult);
-    console.log(bookResult.volumeInfo);
-    // once we have the results 
-    // compare average rating
-          // object.vote_average
-          // object.volumeInfo.averageRating
-  }
+  useEffect(() => {
+    if (matchFound) {
+      const movieRating = movieResult.vote_average / 10;
+      const bookRating = bookResult.volumeInfo.averageRating / 5;
+      if (movieRating > bookRating) {
+        setRatingCompare("The movie rating is better than the book")
+      } else {
+        setRatingCompare("The book rating is better than the movie");
+      }
+    }
+  }, [movieResult]) 
+
     return(
-        <>
+      <>
       <div className="wrapper">        
           {isLoading 
-          ? <p>Fetching results</p> 
-          : <div>
-            Results here
-            </div>
+          && <p>Fetching results</p> 
           }
 
           {matchFound
           ? <div className="results">
            <div className="info-card">
-
-                <h2 className="info-card__title">{movieResult.title}
-                </h2>
-                <p className="info-card__rating"></p>
+                <h2>Movie</h2>
+                <h3 className="info-card__title">{movieResult.title}
+                </h3>
                 <img src={`https://image.tmdb.org/t/p/original/${movieResult.poster_path}`} alt="" className="info-card__image" />
+                <p className="info-card__rating">{movieResult.vote_average}</p>
             </div>
             <div className="info-card">
-                <h2 className="info-card__title">{bookResult.volumeInfo.title}
-                </h2>
-                <p className="info-card__rating"></p>
+                <h2>Book</h2>
+                <h3 className="info-card__title">{bookResult.volumeInfo.title}
+                </h3>
                 <img src={bookResult.volumeInfo.imageLinks.thumbnail} alt="" className="info-card__image" />
+                <p className="info-card__rating">{bookResult.volumeInfo.averageRating}</p>
             </div>
           </div>
-          : <p>Alert</p>}
+          : <p>No match found</p>}
+          <div className="compare-info">
+            <p>{ratingCompare}</p>
+          </div>
         </div>
-        </>
+    </>
     )
-
 }
 
 export default MainResults;

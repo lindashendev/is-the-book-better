@@ -304,8 +304,22 @@ html {
   font-size: 125%;
 }
 
+body {
+  font-family: "Montserrat", serif;
+}
+
 .wrapper {
   width: 85%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Maitree", serif;
+}
+
+h1 {
+  color: #ace8cd;
 }/*# sourceMappingURL=styles.css.map */
