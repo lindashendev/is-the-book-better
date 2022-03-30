@@ -1,0 +1,21 @@
+input {
+  font-family: 'Montserrat', sans-serif;
+  width: 70%;
+}
+
+form {
+  display: flex;
+}
+
+input, button {
+  font-size: 0.9rem;
+  display: inline-block;
+  padding: 12px;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  background-color: $primaryBlue;
+  border: none;
+  padding: 12px 25px;
+}
