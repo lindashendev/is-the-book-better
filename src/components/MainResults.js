@@ -59,6 +59,7 @@ function MainResults({userQuery}) {
   }, [userQuery]);
         
   useEffect(() => {
+    console.log("update");
     if (matchFound) {
       const movieRating = movieResult.vote_average / 10;
       const bookRating = bookResult.volumeInfo.averageRating / 5;
@@ -68,7 +69,7 @@ function MainResults({userQuery}) {
         setRatingCompare("The book rating is better than the movie");
       }
     }
-  }, [movieResult]) 
+  }, [movieResult, bookResult, matchFound]) 
 
     return(
       <>
