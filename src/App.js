@@ -20,6 +20,7 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     getMovie(userInput);
+    getBook(userInput);
     setUserInput('');
   }
 
@@ -32,7 +33,6 @@ function App() {
         query: userQuery
       }
     }).then((res) => {
-      console.log(res);
       return res.data;
     }).then((response) => {
       console.log(response);
@@ -42,6 +42,22 @@ function App() {
     })
   }
 
+  // googlebooks api
+  const getBook = (userQuery) => {
+    axios.get('https://www.googleapis.com/books/v1/volumes', {
+      params: {
+        q: userQuery,
+        key: 'AIzaSyAf3zyWxUfcixOV4_7na6P5uwuVrLtlZDk'
+      }
+    }).then((res) => {
+      return res.data;
+    }).then((response) => {
+      console.log(response);
+      setMovieResult(response);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
   return (
     <div className="App">
       <h1>Is the Book Better</h1>
