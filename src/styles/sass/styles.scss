@@ -3,8 +3,14 @@
 @import './partials/setup';
 @import './partials/variables';
 @import './partials/header';
+@import './partials/info-card';
 
 html {
   font-size: 125%;
 }
 
+.wrapper {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}

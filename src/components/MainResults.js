@@ -11,7 +11,8 @@ function MainResults({userQuery}) {
   // Fecth data...
 
   useEffect(() => {
-
+  
+  // use axios to get results 
     if (userQuery) {
         setIsLoading(true);
         
@@ -21,6 +22,7 @@ function MainResults({userQuery}) {
             query: userQuery
           }
         });
+
         const googleBooksRequest = axios.get('https://www.googleapis.com/books/v1/volumes', {
           params: {
           q: userQuery,
@@ -34,6 +36,7 @@ function MainResults({userQuery}) {
         const movieResults = movieData.data.results;
         const bookResults = booksData.data.items
 
+        console.log(bookResults);
         if (movieResults.length > 0 && bookResults !== undefined) {
           const re = new RegExp(userQuery, 'i')
           const movieFound = movieResults.find(movie => {
@@ -64,26 +67,35 @@ function MainResults({userQuery}) {
           // object.vote_average
           // object.volumeInfo.averageRating
   }
-
     return(
-        <div className="results">
+        <>
+      <div className="wrapper">        
           {isLoading 
           ? <p>Fetching results</p> 
           : <div>
             Results here
-            <div className="movie">
-              <div className="wrapper">
-                
-              </div>
-            </div>
-            <div className="book">
-              <div className="wrapper"></div>
-              </div>
             </div>
           }
-          {!matchFound
-          && <p>Alert</p>}
+
+          {matchFound
+          ? <div className="results">
+           <div className="info-card">
+
+                <h2 className="info-card__title">{movieResult.title}
+                </h2>
+                <p className="info-card__rating"></p>
+                <img src={`https://image.tmdb.org/t/p/original/${movieResult.poster_path}`} alt="" className="info-card__image" />
+            </div>
+            <div className="info-card">
+                <h2 className="info-card__title">{bookResult.volumeInfo.title}
+                </h2>
+                <p className="info-card__rating"></p>
+                <img src={bookResult.volumeInfo.imageLinks.thumbnail} alt="" className="info-card__image" />
+            </div>
+          </div>
+          : <p>Alert</p>}
         </div>
+        </>
     )
 
 }

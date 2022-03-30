@@ -287,6 +287,25 @@ button {
   padding: 12px 25px;
 }
 
+.results {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-card {
+  width: 30%;
+}
+
+div > img {
+  width: 100%;
+}
+
 html {
   font-size: 125%;
+}
+
+.wrapper {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
 }/*# sourceMappingURL=styles.css.map */
