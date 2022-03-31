@@ -37,7 +37,7 @@ function App() {
           <h1>Is the Book Better?</h1>
           <p>Enter the name of a book or movie below</p>
           <form action="#" onSubmit={handleSubmit}>
-              <input value={userInput} type="text" onChange={handleChange} id="search" name="search" placeholder="Search here" />
+              <input value={userInput} type="text" onChange={handleChange} id="search" name="search" placeholder="Search here" required/>
               <button type="submit">Submit</button>
           </form>
         </div>

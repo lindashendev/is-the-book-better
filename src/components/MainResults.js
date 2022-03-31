@@ -60,7 +60,13 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
           title: 'Error',
           text: 'We couldn\'t find a match. Please search again.'
         })
-      }));
+      })).catch(error => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Network Request Error',
+          text: 'We couldn\'t connect to our network.'
+        })
+      });
     } 
   }, [userQuery]);
         
@@ -94,7 +100,7 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
               
               <RatingInfo description={ratingCompare}/>
               <div className="info-card__save">
-                  <button>Save Pair</button>
+                  <button>Save This Result</button>
               </div>
             </>
           }
