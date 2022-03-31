@@ -1,4 +1,5 @@
 // RatingInfo.js
+import 'animate.css';
 
 function RatingInfo({description}) {
     return(

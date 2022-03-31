@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard";
 import BookCard from "./BookCard";
 import RatingInfo from "./RatingInfo";
 import Swal from "sweetalert2";
+import 'animate.css';
 
 function MainResults({userQuery, setMatchFound, matchFound}) {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +61,7 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
           title: 'Error',
           text: 'We couldn\'t find a match. Please search again.'
         })
-      })).catch(error => {
+      })).catch(() => {
         Swal.fire({
           icon: 'error',
           title: 'Network Request Error',
@@ -68,10 +69,16 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
         })
       });
     } 
-  }, [userQuery]);
+  }, [userQuery, setMatchFound]);
         
   useEffect(() => {
     if (matchFound) {
+      window.scroll({
+        top: 150,
+        left: 0,
+        behavior: 'smooth'
+      });
+      
       const movieRating = movieResult.vote_average / 10;
       const bookRating = bookResult.volumeInfo.averageRating / 5;
       if (movieRating > bookRating) {
@@ -79,6 +86,8 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
       } else {
         setRatingCompare("The book rating is better than the movie.");
       }
+    } else {
+
     }
   }, [movieResult, bookResult, matchFound]) 
 
@@ -87,7 +96,11 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
         <div className="wrapper info-card__container">        
           { isLoading 
           && 
-            <p>Fetching results</p> 
+            <div className="loader">
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
           }
           
           { matchFound
@@ -104,7 +117,6 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
               </div>
             </>
           }
-          
         </div>
     </>
     )
