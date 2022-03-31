@@ -42,20 +42,3 @@ input ~ button {
   background-color:  $navyBlue;
   padding: 12px 50px;
 }
-
-.random-pick {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  button {
-    background-color: lighten($primaryGreen, 10%);
-    background-color: transparent;
-    border: 2px solid $primaryBlue;
-    padding: 12px 40px;
-    border-radius: 50px;
-    transition: background-color 0.2s ease-in-out;
-    &:hover {
-      background-color: darken($primaryGreen, 10%);
-    }
-  }
-}

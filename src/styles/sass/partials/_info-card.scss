@@ -3,7 +3,7 @@ main .info-card__container {
     margin-bottom: 80px;
 }
 
-.main-results {
+.info-card__results {
     display: flex;
     justify-content: space-between;
 }
@@ -27,5 +27,22 @@ main .info-card__container {
     }
     &:hover {
         transform: scale(1.1);
+    }
+}
+
+.info-card__save {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    button {
+      background-color: lighten($primaryGreen, 10%);
+      background-color: transparent;
+      border: 2px solid $primaryBlue;
+      padding: 12px 40px;
+      border-radius: 50px;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: darken($primaryGreen, 10%);
+      }
     }
 }

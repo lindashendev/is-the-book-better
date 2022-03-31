@@ -1,9 +1,9 @@
-// import { useState, useEffect } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import MovieDisplayCard from "./MovieCard";
+import BookDisplayCard from "./BookCard";
+import RatingInfo from "./RatingInfo";
 
-
-// useApiData.js
 function MainResults({userQuery}) {
   const [isLoading, setIsLoading] = useState(false);
   const [movieResult, setMovieResult] = useState();
@@ -12,7 +12,7 @@ function MainResults({userQuery}) {
   const [ratingCompare, setRatingCompare] = useState("");
 
   useEffect(() => {
-  
+
   // use axios to get results 
     if (userQuery) {
         setIsLoading(true);
@@ -78,28 +78,15 @@ function MainResults({userQuery}) {
           }
           
           {matchFound
-          ? 
-          <>
-          <div className="main-results">
-           <div className="info-card">
-                <h2>Movie</h2>
-                <h3 className="info-card__title">{movieResult.title}</h3>
-                <img src={`https://image.tmdb.org/t/p/original/${movieResult.poster_path}`} alt="" className="info-card__image" />
-                <p className="info-card__rating">{movieResult.vote_average}</p>
+          ? <>
+            <div className="info-card__results">
+                <MovieDisplayCard info={movieResult}/>
+                <BookDisplayCard info={bookResult}/>
             </div>
-            <div className="info-card">
-                <h2>Book</h2>
-                <h3 className="info-card__title">{bookResult.volumeInfo.title}</h3>
-                <img src={bookResult.volumeInfo.imageLinks.thumbnail} alt="" className="info-card__image" />
-                <p className="info-card__rating">{bookResult.volumeInfo.averageRating}</p>
+            <RatingInfo description={ratingCompare}/>
+            <div className="info-card__save">
+                <button>Save Pair</button>
             </div>
-          </div>
-          <div className="compare-info">
-              <p>{ratingCompare}</p>
-          </div>
-          <div className="random-pick">
-              <button>New pick</button>
-          </div>
           </>
           : <p></p>}
         </div>
