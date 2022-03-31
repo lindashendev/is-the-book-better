@@ -2,6 +2,7 @@ import "./styles/sass/styles.css";
 import { useState } from "react";
 // import axios from "axios";
 import MainResults from "./components/MainResults";
+import Footer from "./components/Footer";
 
 function App() {
   // destructure the return
@@ -26,17 +27,20 @@ function App() {
 
   return (
     <div className="App">
-        <header className="wrapper">
-        <h1>Is the Book Better?</h1>
-        <p>Enter the name of a book or movie below</p>
-        <form action="#" onSubmit={handleSubmit}>
-            <input value={userInput} type="text" onChange={handleChange} id="search" name="search" placeholder="Search here..." />
-            <button type="submit">Submit</button>
-        </form>
+        <header>
+        <div className="wrapper">
+          <h1>Is the Book Better?</h1>
+          <p>Enter the name of a book or movie below</p>
+          <form action="#" onSubmit={handleSubmit}>
+              <input value={userInput} type="text" onChange={handleChange} id="search" name="search" placeholder="Search here..." />
+              <button type="submit">Submit</button>
+          </form>
+        </div>
         </header>
         <main>
             <MainResults userQuery={userSearch}/>
         </main>
+        <Footer />
     </div>
   );
 }

@@ -4,13 +4,14 @@
 @import './partials/variables';
 @import './partials/header';
 @import './partials/info-card';
-
+@import './partials/compare';
 html {
   font-size: 125%;
 }
 
 body {
-  font-family: 'Montserrat', serif;
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
 }
 
 .wrapper {
@@ -23,8 +24,33 @@ h1,
 h2, 
 h3 {
   font-family: 'Maitree', serif;
+  margin: 20px 0;
+}
+
+p {
+  margin: 20px 0;
+}
+
+h2 ~ h3 {
+  margin-top: 0px;
 }
 
 h1 {
+  font-size: 3rem;
   color: $primaryGreen;
+}
+
+a {
+  color: $primaryBlue;
+  text-decoration: none;
+}
+
+footer {
+  border-top: 1px solid grey;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  p {
+    width: 100%;
+  }
 }

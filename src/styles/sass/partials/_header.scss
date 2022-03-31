@@ -1,9 +1,15 @@
+header {
+  margin: 40px 0;
+}
+
 input {
   font-family: 'Montserrat', sans-serif;
   width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
 }
 
 form {
+  margin-top: 25px;
   display: flex;
 }
 

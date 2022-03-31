@@ -59,14 +59,13 @@ function MainResults({userQuery}) {
   }, [userQuery]);
         
   useEffect(() => {
-    console.log("update");
     if (matchFound) {
       const movieRating = movieResult.vote_average / 10;
       const bookRating = bookResult.volumeInfo.averageRating / 5;
       if (movieRating > bookRating) {
-        setRatingCompare("The movie rating is better than the book")
+        setRatingCompare("The movie rating is better than the book.")
       } else {
-        setRatingCompare("The book rating is better than the movie");
+        setRatingCompare("The book rating is better than the movie.");
       }
     }
   }, [movieResult, bookResult, matchFound]) 
@@ -79,18 +78,16 @@ function MainResults({userQuery}) {
           }
 
           {matchFound
-          ? <div className="results">
+          ? <div className="main-results">
            <div className="info-card">
                 <h2>Movie</h2>
-                <h3 className="info-card__title">{movieResult.title}
-                </h3>
+                <h3 className="info-card__title">{movieResult.title}</h3>
                 <img src={`https://image.tmdb.org/t/p/original/${movieResult.poster_path}`} alt="" className="info-card__image" />
                 <p className="info-card__rating">{movieResult.vote_average}</p>
             </div>
             <div className="info-card">
                 <h2>Book</h2>
-                <h3 className="info-card__title">{bookResult.volumeInfo.title}
-                </h3>
+                <h3 className="info-card__title">{bookResult.volumeInfo.title}</h3>
                 <img src={bookResult.volumeInfo.imageLinks.thumbnail} alt="" className="info-card__image" />
                 <p className="info-card__rating">{bookResult.volumeInfo.averageRating}</p>
             </div>
