@@ -13,9 +13,22 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setUserInput('');
-      setUserSearch(userInput);
+    setUserSearch(userInput);
   }
 
+  const popularArray = [
+    "Gone Girl",
+    "The Giver",
+    "Dune",
+    "To Kill a Mockingbird",
+    "The Color Purple",
+    "The Wizard of Oz",
+    "Persepolis"
+  ]
+
+  function handleBtnClick(e) {
+    setUserSearch(e.target.value);
+  }
   return (
     <div className="App">
         <header>
@@ -23,7 +36,7 @@ function App() {
           <h1>Is the Book Better?</h1>
           <p>Enter the name of a book or movie below</p>
           <form action="#" onSubmit={handleSubmit}>
-              <input value={userInput} type="text" onChange={handleChange} id="search" name="search" placeholder="Search here..." />
+              <input value={userInput} type="text" onChange={handleChange} id="search" name="search" placeholder="Search here" />
               <button type="submit">Submit</button>
           </form>
         </div>
@@ -32,17 +45,14 @@ function App() {
             {userSearch 
             ? <MainResults userQuery={userSearch}/>
             : 
-            <div className="wrapper">
+            <div className="wrapper btn-input">
               <p>Popular Searches</p>
               <div className="btn-group">
-                <button>Little Women</button>
-                <button>Gone Girl</button>
-                <button>The Giver</button>
-                <button>Dune</button>
-                <button>To Kill a Mockingbird</button>
-                <button>The Color Purple</button>
-                <button>The Wizard of Oz</button>
-                <button>Persepolis</button>
+                {
+                  popularArray.map((title, index) => 
+                    <button key={index} value={title} onClick={handleBtnClick}>{title}</button>
+                  )
+                }
               </div>
               <Footer />
             </div>

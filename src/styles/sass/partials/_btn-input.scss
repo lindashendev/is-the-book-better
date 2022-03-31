@@ -1,0 +1,19 @@
+.btn-input {
+    text-align: center;
+    p {
+        font-size: 0.8rem;
+        margin: 35px 0;
+    }
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 15px;
+    justify-content: center;
+    button {
+        font-size: 0.8rem;
+        background-color: lighten($primaryBlue, 20%);
+    }
+}

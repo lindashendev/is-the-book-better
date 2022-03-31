@@ -5,6 +5,7 @@
 @import './partials/header';
 @import './partials/info-card';
 @import './partials/compare';
+@import './partials/btn-input';
 
 html {
   font-size: 125%;
@@ -38,7 +39,7 @@ h2 ~ h3 {
 
 h1 {
   font-size: 3rem;
-  color: $primaryBlue;
+  color: $navyBlue;
 }
 
 a {
