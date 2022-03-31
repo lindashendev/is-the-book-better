@@ -288,7 +288,7 @@ form {
   margin-top: 25px;
   display: flex;
   justify-content: center;
-  width: 80%;
+  width: 70%;
 }
 
 input, button {
@@ -311,6 +311,7 @@ input ~ button {
 }
 
 main .info-card__container {
+  width: 85%;
   margin-top: 40px;
   margin-bottom: 80px;
 }
@@ -394,7 +395,7 @@ body {
 }
 
 .wrapper {
-  width: 85%;
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -426,9 +427,9 @@ a {
 
 footer {
   border-top: 1px solid grey;
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 90%;
 }
 footer p {
   width: 100%;

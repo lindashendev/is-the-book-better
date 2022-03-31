@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 function App() {
   const [userInput, setUserInput] = useState("");
   const [userSearch, setUserSearch] = useState("");
+  const [matchFound, setMatchFound] = useState(false);
   const handleChange = (event) => {
       setUserInput(event.target.value);
   }
@@ -43,19 +44,25 @@ function App() {
         </header>
         <main>
             {userSearch 
-            ? <MainResults userQuery={userSearch}/>
-            : 
-            <div className="wrapper btn-input">
-              <p>Popular Searches</p>
-              <div className="btn-group">
-                {
-                  popularArray.map((title, index) => 
-                    <button key={index} value={title} onClick={handleBtnClick}>{title}</button>
-                  )
-                }
+            && 
+              <MainResults userQuery={userSearch} setMatchFound={setMatchFound} matchFound={matchFound}/>
+            }
+
+            {!matchFound 
+              &&             
+              <div className="wrapper">
+                <div className="btn-input">
+                  <p>Popular Searches</p>
+                  <div className="btn-group">
+                    {
+                      popularArray.map((title, index) => 
+                        <button key={index} value={title} onClick={handleBtnClick}>{title}</button>
+                      )
+                    }
+                  </div>
+                </div>
+                <Footer />
               </div>
-              <Footer />
-            </div>
             }
         </main>
     </div>

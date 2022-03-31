@@ -1,6 +1,5 @@
 // CompareCard.js
 function MovieDisplayCard({info}) {
-    console.log(info);  
     return(
         <div className="info-card">
         <h2>Movie</h2>

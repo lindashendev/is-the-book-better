@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import MovieDisplayCard from "./MovieCard";
-import BookDisplayCard from "./BookCard";
+import MovieCard from "./MovieCard";
+import BookCard from "./BookCard";
 import RatingInfo from "./RatingInfo";
+import Swal from "sweetalert2";
 
-function MainResults({userQuery}) {
+function MainResults({userQuery, setMatchFound, matchFound}) {
   const [isLoading, setIsLoading] = useState(false);
   const [movieResult, setMovieResult] = useState();
   const [bookResult, setBookResult] = useState();
-  const [matchFound, setMatchFound] = useState(false);
   const [ratingCompare, setRatingCompare] = useState("");
 
   useEffect(() => {
-
+    setMatchFound(false);
   // use axios to get results 
     if (userQuery) {
         setIsLoading(true);
@@ -51,9 +51,15 @@ function MainResults({userQuery}) {
               setMovieResult(movieFound);
               setBookResult(bookFound);
               setMatchFound(true);
-            }
+              return;
+            } 
           }
         } 
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'We couldn\'t find a match. Please search again.'
+        })
       }));
     } 
   }, [userQuery]);
@@ -72,23 +78,27 @@ function MainResults({userQuery}) {
 
     return(
       <>
-      <div className="wrapper info-card__container">        
-          {isLoading 
-          && <p>Fetching results</p> 
+        <div className="wrapper info-card__container">        
+          { isLoading 
+          && 
+            <p>Fetching results</p> 
           }
           
-          {matchFound
-          ? <>
-            <div className="info-card__results">
-                <MovieDisplayCard info={movieResult}/>
-                <BookDisplayCard info={bookResult}/>
-            </div>
-            <RatingInfo description={ratingCompare}/>
-            <div className="info-card__save">
-                <button>Save Pair</button>
-            </div>
-          </>
-          : <p></p>}
+          { matchFound
+          && 
+            <>
+              <div className="info-card__results">
+                  <MovieCard info={movieResult}/>
+                  <BookCard info={bookResult}/>
+              </div>
+              
+              <RatingInfo description={ratingCompare}/>
+              <div className="info-card__save">
+                  <button>Save Pair</button>
+              </div>
+            </>
+          }
+          
         </div>
     </>
     )
