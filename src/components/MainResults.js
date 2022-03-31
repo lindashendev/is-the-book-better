@@ -72,13 +72,15 @@ function MainResults({userQuery}) {
 
     return(
       <>
-      <div className="wrapper">        
+      <div className="wrapper info-card__container">        
           {isLoading 
           && <p>Fetching results</p> 
           }
-
+          
           {matchFound
-          ? <div className="main-results">
+          ? 
+          <>
+          <div className="main-results">
            <div className="info-card">
                 <h2>Movie</h2>
                 <h3 className="info-card__title">{movieResult.title}</h3>
@@ -92,10 +94,14 @@ function MainResults({userQuery}) {
                 <p className="info-card__rating">{bookResult.volumeInfo.averageRating}</p>
             </div>
           </div>
-          : <p>No match found</p>}
           <div className="compare-info">
-            <p>{ratingCompare}</p>
+              <p>{ratingCompare}</p>
           </div>
+          <div className="random-pick">
+              <button>New pick</button>
+          </div>
+          </>
+          : <p></p>}
         </div>
     </>
     )

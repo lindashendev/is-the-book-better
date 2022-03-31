@@ -266,7 +266,13 @@ html {
 }
 
 header {
-  margin: 40px 0;
+  padding-top: 60px;
+}
+header div {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }
 
 input {
@@ -278,6 +284,8 @@ input {
 form {
   margin-top: 25px;
   display: flex;
+  justify-content: center;
+  width: 80%;
 }
 
 input, button {
@@ -290,11 +298,32 @@ button {
   font-family: "Montserrat", sans-serif;
   background-color: #5da9c2;
   border: none;
-  padding: 12px 25px;
+  padding: 12px 35px;
+}
+
+.random-pick {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.random-pick button {
+  background-color: #d4f3e5;
+  background-color: transparent;
+  border: 2px solid #5da9c2;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: background-color 0.2s ease-in-out;
+}
+.random-pick button:hover {
+  background-color: #84ddb5;
+}
+
+main .info-card__container {
+  margin-top: 40px;
+  margin-bottom: 80px;
 }
 
 .main-results {
-  margin-top: 40px;
   display: flex;
   justify-content: space-between;
 }
@@ -307,7 +336,7 @@ button {
   justify-content: center;
   width: 40%;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px;
   transition: 0.2s ease-in-out;
   transform: scale(1);
 }
@@ -344,11 +373,11 @@ h1,
 h2,
 h3 {
   font-family: "Maitree", serif;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 p {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 h2 ~ h3 {
@@ -357,7 +386,7 @@ h2 ~ h3 {
 
 h1 {
   font-size: 3rem;
-  color: #ace8cd;
+  color: #5da9c2;
 }
 
 a {
@@ -367,10 +396,15 @@ a {
 
 footer {
   border-top: 1px solid grey;
-  position: absolute;
-  width: 100%;
+  position: fixed;
   bottom: 0;
+  width: 100%;
 }
 footer p {
   width: 100%;
+}
+
+.App {
+  min-height: 100%;
+  position: relative;
 }/*# sourceMappingURL=styles.css.map */

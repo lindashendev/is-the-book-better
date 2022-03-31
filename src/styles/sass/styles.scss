@@ -5,6 +5,7 @@
 @import './partials/header';
 @import './partials/info-card';
 @import './partials/compare';
+
 html {
   font-size: 125%;
 }
@@ -24,11 +25,11 @@ h1,
 h2, 
 h3 {
   font-family: 'Maitree', serif;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 p {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 h2 ~ h3 {
@@ -37,7 +38,7 @@ h2 ~ h3 {
 
 h1 {
   font-size: 3rem;
-  color: $primaryGreen;
+  color: $primaryBlue;
 }
 
 a {
@@ -47,10 +48,15 @@ a {
 
 footer {
   border-top: 1px solid grey;
-  position: absolute;
-  width: 100%;
+  position: fixed;
   bottom: 0;
+  width: 100%;
   p {
     width: 100%;
   }
+}
+
+.App {
+  min-height: 100%;
+  position: relative;
 }

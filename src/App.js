@@ -5,15 +5,6 @@ import MainResults from "./components/MainResults";
 import Footer from "./components/Footer";
 
 function App() {
-  // destructure the return
-  // on submit event from the form
-    // use the user query for the axios call
-    // use state as the param to the movie database API and goodreads API
-    // store the response in a state
-
-  // display information
-    // show movie poster and book cover when successful, otherwise ask user for new search query
-
   const [userInput, setUserInput] = useState("");
   const [userSearch, setUserSearch] = useState("");
   const handleChange = (event) => {
@@ -38,9 +29,25 @@ function App() {
         </div>
         </header>
         <main>
-            <MainResults userQuery={userSearch}/>
+            {userSearch 
+            ? <MainResults userQuery={userSearch}/>
+            : 
+            <div className="wrapper">
+              <p>Popular Searches</p>
+              <div className="btn-group">
+                <button>Little Women</button>
+                <button>Gone Girl</button>
+                <button>The Giver</button>
+                <button>Dune</button>
+                <button>To Kill a Mockingbird</button>
+                <button>The Color Purple</button>
+                <button>The Wizard of Oz</button>
+                <button>Persepolis</button>
+              </div>
+              <Footer />
+            </div>
+            }
         </main>
-        <Footer />
     </div>
   );
 }
