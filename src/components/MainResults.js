@@ -14,7 +14,6 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
 
   useEffect(() => {
     setMatchFound(false);
-  // use axios to get results 
     if (userQuery) {
         setIsLoading(true);
         
@@ -43,11 +42,13 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
           const movieFound = movieResults.find(movie => {
             return re.test(movie.title);
           })
+
           if (movieFound) {
             const title = movieFound.title;
             const bookFound = bookResults.find(book => {
               return book.volumeInfo.title === title;
             })
+            
             if (bookFound) {
               setMovieResult(movieFound);
               setBookResult(bookFound);
@@ -59,13 +60,21 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'We couldn\'t find a match. Please search again.'
+          width: '500',
+          customClass: {
+            popup: 'swal-show'
+          },
+          html: '<p>' + 'We couldn\'t find a match. Please search again.' + '<p>'
         })
       })).catch(() => {
         Swal.fire({
           icon: 'error',
+          width: '500',
+          customClass: {
+            popup: 'swal-show'
+          },
           title: 'Network Request Error',
-          text: 'We couldn\'t connect to our network.'
+          html: '<p>' + 'We couldn\'t connect to our network.' + '<p>'
         })
       });
     } 
@@ -112,9 +121,9 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
               </div>
               
               <RatingInfo description={ratingCompare}/>
-              <div className="info-card__save">
+              {/* <div className="info-card__save">
                   <button>Save This Result</button>
-              </div>
+              </div> */}
             </>
           }
         </div>

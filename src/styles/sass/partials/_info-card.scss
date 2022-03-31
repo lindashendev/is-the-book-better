@@ -33,8 +33,10 @@ main .info-card__container {
     p {
         font-size: 0.8rem;
     }
-    img {
+    .info-card__image {
+        border-radius: 2px;
         width: 40%;  
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     .info-card__overlay {
         p {
