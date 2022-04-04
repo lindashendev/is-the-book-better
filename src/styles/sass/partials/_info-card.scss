@@ -1,23 +1,24 @@
-main .info-card__container {
+main .info-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    margin-top: 40px;
+    // width: 80%;
+    margin-top: 20px;
     margin-bottom: 80px;
 }
 
 .info-card__results {
     display: flex;
     justify-content: space-between;
+    width: 80%;
 }
 
-.info-card {
-    background-color: $primaryBlue;
+.info-card__container {
+    border: 1px solid $primaryBlue;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 35%;
+    width: 45%;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px;
     transition: 0.2s ease-in-out;
@@ -34,27 +35,47 @@ main .info-card__container {
         font-size: 0.8rem;
     }
     .info-card__image {
-        border-radius: 2px;
-        width: 40%;  
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 2px; 
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        img {
+            width: 70%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    }
+    .info-card__section {
+        display: flex;
+        justify-content: space-between;
     }
     .info-card__overlay {
         p {
             display: none;
         }
     }
-    // &:hover {
-    //     transform: scale(1.1);
-    //     background-color: #ededed;
-    //     img {
-    //         display: none;
-    //     }
-    //     .info-card__overlay {
-    //         p {
-    //             display: flex;
-    //         }
-    //     }
-    // }
+    .info-card__rating {
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+    &:hover {
+        transform: scale(1.1);
+        background-color: #ededed;
+        h2, img, p:nth-of-type(2){
+            display: none;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+        .info-card__overlay {
+            p {
+                display: flex;
+            }
+        }
+    }
+}
+
+.info-card__inner {
+    padding: 20px;
 }
 
 .info-card__save {

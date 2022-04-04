@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import MovieCard from "./MovieCard";
-import BookCard from "./BookCard";
-import RatingInfo from "./RatingInfo";
+import ShowMovieCard from "./ShowMovieCard";
+import ShowBookCard from "./ShowBookCard";
+import CompareRating from "./CompareRating";
+import LoaderIcon from "./LoaderIcon";
 import Swal from "sweetalert2";
 import 'animate.css';
 
-function MainResults({userQuery, setMatchFound, matchFound}) {
+function ResultsPage({userQuery, setMatchFound, matchFound}) {
   const [isLoading, setIsLoading] = useState(false);
-  const [movieResult, setMovieResult] = useState();
-  const [bookResult, setBookResult] = useState();
+  const [movieResult, setMovieResult] = useState({});
+  const [bookResult, setBookResult] = useState({});
   const [ratingCompare, setRatingCompare] = useState("");
+  // const [winner, setWinner] = useState({
+  //   book: false,
+  //   movie: false
+  // })
 
   useEffect(() => {
     setMatchFound(false);
@@ -48,7 +53,7 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
             const bookFound = bookResults.find(book => {
               return book.volumeInfo.title === title;
             })
-            
+
             if (bookFound) {
               setMovieResult(movieFound);
               setBookResult(bookFound);
@@ -64,7 +69,7 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
           customClass: {
             popup: 'swal-show'
           },
-          html: '<p>' + 'We couldn\'t find a match. Please search again.' + '<p>'
+          html: '<p>We couldn\'t find a match. Please search again.<p>'
         })
       })).catch(() => {
         Swal.fire({
@@ -74,7 +79,7 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
             popup: 'swal-show'
           },
           title: 'Network Request Error',
-          html: '<p>' + 'We couldn\'t connect to our network.' + '<p>'
+          html: '<p>We couldn\'t connect to our network.<p>'
         })
       });
     } 
@@ -91,9 +96,9 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
       const movieRating = movieResult.vote_average / 10;
       const bookRating = bookResult.volumeInfo.averageRating / 5;
       if (movieRating > bookRating) {
-        setRatingCompare("The movie rating is better than the book.")
+        setRatingCompare("The movie rating is higher than the book.")
       } else {
-        setRatingCompare("The book rating is better than the movie.");
+        setRatingCompare("The book rating is higher than the movie.");
       }
     } else {
 
@@ -102,25 +107,22 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
 
     return(
       <>
-        <div className="wrapper info-card__container">        
+        <div className="wrapper info-card">        
           { isLoading 
           && 
-            <div className="loader">
-              <div className="line"></div>
-              <div className="line"></div>
-              <div className="line"></div>
-            </div>
+            <LoaderIcon />
           }
           
           { matchFound
           && 
             <>
+              {/* <h3 className="info-card__title">{movieResult.title}</h3> */}
+              <CompareRating description={ratingCompare}/>              
               <div className="info-card__results">
-                  <MovieCard info={movieResult}/>
-                  <BookCard info={bookResult}/>
+                  <ShowMovieCard info={movieResult}/>
+                  <ShowBookCard info={bookResult}/>
               </div>
-              
-              <RatingInfo description={ratingCompare}/>
+
               {/* <div className="info-card__save">
                   <button>Save This Result</button>
               </div> */}
@@ -131,4 +133,4 @@ function MainResults({userQuery, setMatchFound, matchFound}) {
     )
 }
 
-export default MainResults;
+export default ResultsPage;

@@ -13,13 +13,6 @@
             padding: 10px 30px;
         }
     }
-    footer {
-        margin-top: 60px;
-        position: relative;
-        p {
-            font-size: 0.6rem;
-        }
-    }
 }
 
 @media (max-width: 768px) {
@@ -30,8 +23,15 @@
         .info-card__image {
             width: 80%;
         }
-        .info-card {
+        .info-card__container {
             width: 90%;
+        }
+    }
+    footer {
+        margin-top: 60px;
+        position: relative;
+        p {
+            font-size: 0.6rem;
         }
     }
 }
@@ -57,9 +57,12 @@
 }
 
 @media (max-width: 375px) {
-    .btn-group {
+    .btn-search__container {
         button {
             font-size: 0.7rem;
         }
+    }
+    p {
+        text-align: center;
     }
 }

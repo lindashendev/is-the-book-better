@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Maitree&family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Maitree:wght@400;500;600&family=Montserrat:wght@400;600&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -265,14 +265,28 @@ html {
   overflow: hidden;
 }
 
-header {
-  padding-top: 60px;
+header nav {
+  margin: 0;
+  background-color: #ace8cd;
 }
-header div {
+header nav p {
+  font-family: "Maitree", serif;
+  font-weight: 500;
+  margin: 0;
+  padding: 15px;
+}
+header .header {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
+}
+header .header h1 {
+  margin-top: 40px;
+}
+header .header p {
+  margin: 20px 0;
 }
 
 input {
@@ -285,7 +299,7 @@ input {
 }
 
 form {
-  margin-top: 25px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   width: 60%;
@@ -309,18 +323,18 @@ input ~ button {
   padding: 12px 50px;
 }
 
-.btn-input {
+.btn-search {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.btn-input p {
+.btn-search p {
   font-size: 0.8rem;
   margin: 35px 0;
 }
 
-.btn-group {
+.btn-search__container {
   display: flex;
   width: 80%;
   flex-wrap: wrap;
@@ -329,55 +343,85 @@ input ~ button {
   row-gap: 15px;
   justify-content: center;
 }
-.btn-group button {
+.btn-search__container button {
   font-size: 0.75rem;
   padding: 10px 30px;
   background-color: #a7d0de;
 }
 
-main .info-card__container {
+main .info-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 80px;
 }
 
 .info-card__results {
   display: flex;
   justify-content: space-between;
+  width: 80%;
 }
 
-.info-card {
-  background-color: #5da9c2;
+.info-card__container {
+  border: 1px solid #5da9c2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 35%;
+  width: 45%;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px;
   transition: 0.2s ease-in-out;
   transform: scale(1);
   overflow: hidden;
 }
-.info-card > * {
+.info-card__container > * {
   width: 90%;
 }
-.info-card h3 {
+.info-card__container h3 {
   font-family: "Montserrat", sans-serif;
   font-size: 1.3rem;
 }
-.info-card p {
+.info-card__container p {
   font-size: 0.8rem;
 }
-.info-card .info-card__image {
+.info-card__container .info-card__image {
   border-radius: 2px;
-  width: 40%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.info-card__container .info-card__image img {
+  width: 70%;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.info-card .info-card__overlay p {
+.info-card__container .info-card__section {
+  display: flex;
+  justify-content: space-between;
+}
+.info-card__container .info-card__overlay p {
   display: none;
+}
+.info-card__container .info-card__rating {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.info-card__container:hover {
+  transform: scale(1.1);
+  background-color: #ededed;
+}
+.info-card__container:hover h2, .info-card__container:hover img, .info-card__container:hover p:nth-of-type(2) {
+  display: none;
+}
+.info-card__container:hover .highlight {
+  font-weight: bold;
+}
+.info-card__container:hover .info-card__overlay p {
+  display: flex;
+}
+
+.info-card__inner {
+  padding: 20px;
 }
 
 .info-card__save {
@@ -407,7 +451,15 @@ main .info-card__container {
           animation-duration: 0.3s;
 }
 
-.loader {
+.compare-rating__text {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.compare-rating__text span {
+  font-weight: 600;
+}
+
+.loader-icon {
   display: flex;
   margin-top: 50px;
   width: 45px;
@@ -426,19 +478,19 @@ main .info-card__container {
   background-color: #261870;
 }
 
-.loader .line:nth-child(1) {
+.loader-icon .line:nth-child(1) {
   left: 0px;
   -webkit-animation: loading 0.5s ease-in 0s infinite;
           animation: loading 0.5s ease-in 0s infinite;
 }
 
-.loader .line:nth-child(2) {
+.loader-icon .line:nth-child(2) {
   left: 20px;
   -webkit-animation: loading 0.5s ease-in 0.15s infinite;
           animation: loading 0.5s ease-in 0.15s infinite;
 }
 
-.loader .line:nth-child(3) {
+.loader-icon .line:nth-child(3) {
   left: 40px;
   -webkit-animation: loading 0.5s ease-in 0.25s infinite;
           animation: loading 0.5s ease-in 0.25s infinite;
@@ -486,7 +538,8 @@ h1,
 h2,
 h3 {
   font-family: "Maitree", serif;
-  margin: 15px 0;
+  font-weight: 500;
+  margin: 0px;
 }
 
 p {
@@ -501,6 +554,16 @@ h2 ~ h3 {
 h1 {
   font-size: 2.5rem;
   color: #261870;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  margin-bottom: 35px;
+}
+h2 span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
 }
 
 a {
@@ -540,14 +603,6 @@ footer p {
   form button {
     padding: 10px 30px;
   }
-
-  footer {
-    margin-top: 60px;
-    position: relative;
-  }
-  footer p {
-    font-size: 0.6rem;
-  }
 }
 @media (max-width: 768px) {
   .info-card__results {
@@ -558,8 +613,16 @@ footer p {
   .info-card__results .info-card__image {
     width: 80%;
   }
-  .info-card__results .info-card {
+  .info-card__results .info-card__container {
     width: 90%;
+  }
+
+  footer {
+    margin-top: 60px;
+    position: relative;
+  }
+  footer p {
+    font-size: 0.6rem;
   }
 }
 @media (max-width: 568px) {
@@ -581,7 +644,11 @@ footer p {
   }
 }
 @media (max-width: 375px) {
-  .btn-group button {
+  .btn-search__container button {
     font-size: 0.7rem;
+  }
+
+  p {
+    text-align: center;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -1,4 +1,4 @@
-.loader {
+.loader-icon {
     display: flex;
     margin-top: 50px;
     width: 45px;
@@ -17,15 +17,15 @@
     background-color: $navyBlue;
   }
 
-.loader .line:nth-child(1) {
+.loader-icon .line:nth-child(1) {
   left: 0px;
   animation: loading 0.50s ease-in 0s infinite;
 }
-.loader .line:nth-child(2) {
+.loader-icon .line:nth-child(2) {
   left: 20px;
   animation: loading 0.50s ease-in 0.15s infinite;
 }
-.loader .line:nth-child(3) {
+.loader-icon .line:nth-child(3) {
   left: 40px;
   animation: loading 0.50s ease-in 0.25s infinite;
 }

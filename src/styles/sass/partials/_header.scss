@@ -1,10 +1,26 @@
 header {
-  padding-top: 60px;
-  div {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
+  nav {
+      margin: 0;
+      background-color: $primaryGreen;
+      p {
+          font-family: 'Maitree', serif;
+          font-weight: 500;
+          margin: 0;
+          padding: 15px;
+      }
+  }
+  .header {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      h1 {
+        margin-top: 40px;
+      }
+      p {
+        margin: 20px 0;
+      }
   }
 }
 
@@ -18,7 +34,7 @@ input {
 }
 
 form {
-  margin-top: 25px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   width: 60%;
@@ -36,13 +52,14 @@ button {
   padding: 8px 30px;
 }
 
+
 input ~ button {
   color: white;
   background-color:  $navyBlue;
   padding: 12px 50px;
 }
 
-.btn-input {
+.btn-search {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -53,7 +70,7 @@ input ~ button {
   }
 }
 
-.btn-group {
+.btn-search__container {
   display: flex;
   width: 80%;
   flex-wrap: wrap;

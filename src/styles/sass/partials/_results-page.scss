@@ -1,7 +1,16 @@
+// main results page
 .compare-info {
     margin: 40px 0;
     display: inline-block;
     margin: 0 0.5rem;
     animation: slide; 
     animation-duration: 0.3s;
+}
+
+.compare-rating__text {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    span {
+        font-weight: 600;
+    }
 }

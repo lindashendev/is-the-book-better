@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Maitree&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maitree:wght@400;500;600&family=Montserrat:wght@400;600&display=swap');
 
 @import './partials/setup';
 @import './partials/variables';
 @import './partials/header';
 @import './partials/info-card';
-@import './partials/compare';
-@import './partials/loader';
+@import './partials/results-page';
+@import './partials/loader-icon';
 
 html {
   font-size: 125%;
@@ -26,7 +26,8 @@ h1,
 h2, 
 h3 {
   font-family: 'Maitree', serif;
-  margin: 15px 0;
+  font-weight: 500;
+  margin: 0px;
 }
 
 p {
@@ -41,6 +42,16 @@ h2 ~ h3 {
 h1 {
   font-size: 2.5rem;
   color: $navyBlue;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  margin-bottom: 35px;
+  span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+  }
 }
 
 a {
@@ -60,6 +71,7 @@ footer {
   }
 }
 
+// error alert
 .swal-show {
   p {
     margin: 0;
