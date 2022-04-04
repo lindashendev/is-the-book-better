@@ -1,21 +1,85 @@
+header {
+  nav {
+      margin: 0;
+      background-color: $primaryGreen;
+      p {
+          font-family: 'Maitree', serif;
+          font-weight: 500;
+          margin: 0;
+          padding: 15px;
+      }
+  }
+  .header {
+      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      h1 {
+        margin-top: 40px;
+      }
+      p {
+        margin: 20px 0;
+      }
+  }
+}
+
 input {
   font-family: 'Montserrat', sans-serif;
   width: 70%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+  border:1.5px solid $darkGrey;
+  padding-left: 12px;  
+  margin-right: 10px;
 }
 
 form {
+  margin-top: 5px;
   display: flex;
+  justify-content: center;
+  width: 60%;
 }
 
 input, button {
   font-size: 0.9rem;
   display: inline-block;
-  padding: 12px;
+  border-radius: 20px
 }
 
 button {
   font-family: 'Montserrat', sans-serif;
-  background-color: $primaryBlue;
   border: none;
-  padding: 12px 25px;
+  padding: 8px 30px;
+}
+
+
+input ~ button {
+  color: white;
+  background-color:  $navyBlue;
+  padding: 12px 50px;
+}
+
+.btn-search {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+      font-size: 0.8rem;
+      margin: 35px 0;
+  }
+}
+
+.btn-search__container {
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 15px;
+  justify-content: center;
+  button {
+      font-size: 0.75rem;
+      padding: 10px 30px;
+      background-color: lighten($primaryBlue, 20%);
+  }
 }

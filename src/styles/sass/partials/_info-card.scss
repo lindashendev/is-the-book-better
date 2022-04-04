@@ -1,11 +1,96 @@
-.results {
+main .info-card {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    // width: 80%;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
-.info-card {
-    width: 30%;
+.info-card__results {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
 }
-div > img {
-    width: 100%;
+
+.info-card__container {
+    border: 1px solid $primaryBlue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px;
+    transition: 0.2s ease-in-out;
+    transform: scale(1);
+    overflow: hidden;
+    & > * {
+        width: 90%;
+    }
+    h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.3rem;
+    }
+    p {
+        font-size: 0.8rem;
+    }
+    .info-card__image {
+        border-radius: 2px; 
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        img {
+            width: 70%;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    }
+    .info-card__section {
+        display: flex;
+        justify-content: space-between;
+    }
+    .info-card__overlay {
+        p {
+            display: none;
+        }
+    }
+    .info-card__rating {
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+    &:hover {
+        transform: scale(1.1);
+        background-color: #ededed;
+        h2, img, p:nth-of-type(2){
+            display: none;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+        .info-card__overlay {
+            p {
+                display: flex;
+            }
+        }
+    }
+}
+
+.info-card__inner {
+    padding: 20px;
+}
+
+.info-card__save {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    button {
+      background-color: lighten($primaryGreen, 10%);
+      background-color: transparent;
+      border: 2px solid $primaryBlue;
+      padding: 12px 40px;
+      border-radius: 50px;
+      transition: background-color 0.2s ease-in-out;
+      &:hover {
+        background-color: darken($primaryGreen, 10%);
+      }
+    }
 }
